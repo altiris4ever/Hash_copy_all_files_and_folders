@@ -16,9 +16,11 @@ This script accepts 4 parameters.
 .EXAMPLE
 .\scriptname.ps1 -source -destination -logfile -writeoutput $true
 scriptname.ps1 -source c:\temp\1 -destination c:\temp\2 -logfile c:\temp\logefile.log -writeoutput $true
-#examplescript for uploading Teams backgroundfiles into each users "env:USERPROFILE"\AppData\Roaming\Microsoft\Teams\Backgrounds\Uploads" folder from a fileshare. 
-#if this script is signed it could be run by the std user account on logon, or by SCCM,a scheduled task or something similar like that.
-scriptname.ps -source \\fileshare\teams\ -destination $env:USERPROFILE"\AppData\Roaming\Microsoft\Teams\Backgrounds\Uploads" -logfile $env:USERPROFILE"\AppData\Roaming\Microsoft\Teams\Backgrounds\Background_copy.log"
+#Examplescript 1: For uploading Teams backgroundfiles into each users "env:USERPROFILE"\AppData\Roaming\Microsoft\Teams\Backgrounds\Uploads" folder from a fileshare. 
+#if this script is signed it could be run alongside envionments who has Applocker activated, even by the std user account on logon, or by SCCM,a scheduled task or something similar like that.
+scriptname.ps1 -source \\fileshare\teams\ -destination $env:USERPROFILE"\AppData\Roaming\Microsoft\Teams\Backgrounds\Uploads" -logfile $env:USERPROFILE"\AppData\Roaming\Microsoft\Teams\Backgrounds\Background_copy.log"
+#Examplescript 2: For downloading notepad ++ plugins from a fileshare into %programfiles%\notepad++\plugins folder. MUST RUN THIS WITH admin right since it's a protected system folder.
+scriptname.ps1 -source \\fileshare\notepad++\plugin\ -destination "C:\Program Files\Notepad++\plugins" -logfile "C:\Program Files\Notepad++\plugins\Plugin_copy.log"
 
 .NOTES
 Author: https://twitter.com/ArneJ666 
